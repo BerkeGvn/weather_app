@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="#" />
+    <script src="https://kit.fontawesome.com/93092a9364.js" crossorigin="anonymous"></script>
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="header_h1"><i class="fas fa-cloud"></i>Gvn Weather</h1>
+        <!--     <button class="fahre">asfas</button> -->
+        <nav class="header_nav">
+          <input class="header_nav_city-picker" type="text" placeholder="Weather in your city" />
+          <button class="header_nav_find"><i class="fas fa-search"></i></button>
+        </nav>
+      </header>
+      <main class="main_weather">
+        <div class="today">
+          <div class="current">
+            <h1 class="current_city"></h1>
+            <p class="current_time"></p>
+            <div class="current-main">
+              <div class="current-1">
+                <img class="current_icon" src="" alt="" />
+                <p class="current_temp"></p>
+                <p class="current_weather"></p>
+                <p class="current_wind"><i class="fas fa-wind"> </i><span></span></p>
+              </div>
+              <div class="current-2">
+                <p class="current_feels-like">Feels like: <span></span></p>
+                <p class="current_humidity">Humidity: <span></span></p>
+                <p class="current_clouds">Clouds: <span></span></p>
+                <p class="current_sunrise">Sunrise: <span></span></p>
+                <p class="current_sunset">Sunset: <span></span></p>
+              </div>
+            </div>
+          </div>
+          <div class="hourly">
+            <div class="hourly_container hourly_container-1">
+              <div class="hours"></div>
+              <div class="hours"></div>
+              <div class="hours"></div>
+              <div class="hours"></div>
+              <div class="hours"></div>
+              <div class="hours"></div>
+            </div>
+            <div class="hourly_container hourly_container-2">
+              <div class="hours"></div>
+              <div class="hours"></div>
+              <div class="hours"></div>
+              <div class="hours"></div>
+              <div class="hours"></div>
+              <div class="hours"></div>
+            </div>
+          </div>
+        </div>
+        <div class="daily">
+          <div class="daily_day_container">
+            <div class="days table">
+              <p>Days</p>
+              <p>Weather</p>
+              <p>Humidity</p>
+              <p>Temperature</p>
+            </div>
+            <div class="days"></div>
+            <div class="days"></div>
+            <div class="days"></div>
+            <div class="days"></div>
+            <div class="days"></div>
+            <div class="days"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
