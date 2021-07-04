@@ -13,8 +13,7 @@ async function daily(loc, unit = 'metric') {
   const weatherData = response;
   weatherData.name = currentLoc.name;
   weatherData.country = currentLoc.country;
-  console.log(response);
   return weatherData;
 }
 
-export { daily, weather };
+export default daily;

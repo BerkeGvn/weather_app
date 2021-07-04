@@ -1,6 +1,6 @@
 import moment from 'moment-timezone';
 import * as dom from './dom';
-import * as weather from './weatherAPI';
+import daily from './weatherAPI';
 
 // tasiyabilirim
 function toFirtLetterUpperCase(phrase) {
@@ -12,10 +12,14 @@ function toFirtLetterUpperCase(phrase) {
 }
 
 let currentCity;
+let celcius = true;
+dom.checkbox.checked = false;
 async function getCurrentView(city) {
   dom.header.textContent = `${city.name} , ${city.country}`;
   dom.currentTime.textContent = moment().tz(city.timezone).format('HH:mm');
-  dom.currentTemp.textContent = `${city.current.temp.toFixed()} ℃`;
+
+  dom.currentTemp.textContent = `${city.current.temp.toFixed()} °`;
+
   dom.currentWeather.textContent = toFirtLetterUpperCase(city.current.weather[0].description);
   const { icon } = city.current.weather[0];
   dom.currentIcon.src = `http://openweathermap.org/img/wn/${icon}@4x.png`;
@@ -89,16 +93,24 @@ function renderDays() {
 }
 
 async function initial() {
-  currentCity = await weather.daily();
+  currentCity = await daily();
   getCurrentView(currentCity);
   getHourlyWeather(currentCity);
   getDailyWeather(currentCity);
   return currentCity;
 }
+async function changeUnit(city) {
+  const fahreneit = await daily(city, 'imperial');
+  getCurrentView(fahreneit);
+  renderHours();
+  renderDays();
+  getHourlyWeather(fahreneit);
+  getDailyWeather(fahreneit);
+}
 
 async function getCityWeather() {
   const city = dom.input.value.trim();
-  currentCity = await weather.daily(city);
+  currentCity = await daily(city);
   dom.input.value = '';
 }
 
@@ -109,6 +121,9 @@ async function updateWeather() {
   renderDays();
   getHourlyWeather(currentCity);
   getDailyWeather(currentCity);
+  if (dom.checkbox.checked) {
+    changeUnit(currentCity.name);
+  }
 }
 
 function events() {
@@ -120,8 +135,17 @@ function events() {
     updateWeather();
   });
 
-  dom.metric.addEventListener('click', () => {
-
+  dom.metric.addEventListener('change', () => {
+    if (celcius) {
+      changeUnit(currentCity.name);
+    } else {
+      getCurrentView(currentCity);
+      renderHours();
+      renderDays();
+      getHourlyWeather(currentCity);
+      getDailyWeather(currentCity);
+    }
+    celcius = !celcius;
   });
 }
 export default events;

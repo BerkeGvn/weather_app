@@ -14,9 +14,10 @@ const currentWind = document.querySelector('.current_wind span');
 const hours = document.querySelectorAll('.hours');
 const days = document.querySelectorAll('.days');
 const metric = document.querySelector('.fahre');
+const checkbox = document.querySelector('.checkbox');
 
 export {
   input, btn, header, currentTemp, currentWeather, currentTime, currentIcon,
   currentFeelsLike, currentHumidity, currentClouds, currentSunrise, currentSunset, currentWind,
-  hours, days, metric,
+  hours, days, metric, checkbox,
 };
